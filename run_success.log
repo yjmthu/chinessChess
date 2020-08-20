@@ -1,0 +1,128 @@
+☁  chess  sudo rm -rf pkg
+[sudo] xmuli 的密码：
+☁  chess  makepkg 
+==> 正在创建软件包：chinesschess 5.6.0-1 (2020年08月20日 星期四 15时32分48秒)
+==> 正在检查运行时依赖关系...
+==> 正在检查编译时依赖关系
+==> 获取源代码...
+  -> 正在下载 chinessChess-5.6.0...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   126  100   126    0     0    124      0  0:00:01  0:00:01 --:--:--   124
+100  745k    0  745k    0     0   239k      0 --:--:--  0:00:03 --:--:--  383k
+==> 正在验证 source 文件，使用md5sums...
+    chinessChess-5.6.0 ... 通过
+==> 正在释放源码...
+  -> 正在解压缩 chinessChess-5.6.0，使用 bsdtar
+==> 正在开始 prepare()...
+/home/xmuli/project/github/temp/chess/src
+==> 正在开始 build()...
+Info: creating stash file /home/xmuli/project/github/temp/chess/src/chinessChess-5.6.0/bin/.qmake.stash
+/usr/bin/uic ../ChessBoard.ui -o ui_ChessBoard.h
+/usr/bin/uic ../AboutAuthor.ui -o ui_AboutAuthor.h
+g++ -c -pipe -D_FORTIFY_SOURCE=2 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -Wall -Wextra -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../chinessChess-5.6.0 -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++ -o main.o ../main.cpp
+g++ -c -pipe -D_FORTIFY_SOURCE=2 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -Wall -Wextra -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../chinessChess-5.6.0 -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++ -o ChessPieces.o ../ChessPieces.cpp
+g++ -c -pipe -D_FORTIFY_SOURCE=2 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -Wall -Wextra -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../chinessChess-5.6.0 -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++ -o ChessStep.o ../ChessStep.cpp
+g++ -c -pipe -D_FORTIFY_SOURCE=2 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -Wall -Wextra -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../chinessChess-5.6.0 -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++ -o MachineGame.o ../MachineGame.cpp
+g++ -c -pipe -D_FORTIFY_SOURCE=2 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -Wall -Wextra -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../chinessChess-5.6.0 -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++ -o NetworkGame.o ../NetworkGame.cpp
+g++ -c -pipe -D_FORTIFY_SOURCE=2 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -Wall -Wextra -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../chinessChess-5.6.0 -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++ -o ChooseMainWindow.o ../ChooseMainWindow.cpp
+../MachineGame.cpp: 在成员函数‘ChessStep* MachineGame::getBestMove()’中:
+../MachineGame.cpp:319:53: 警告：‘void qsrand(uint)’ is deprecated: use QRandomGenerator instead [-Wdeprecated-declarations]
+  319 |     qsrand(QTime(0,0,0).secsTo(QTime::currentTime())); //随机数种子, 0~MAX
+      |                                                     ^
+In file included from /usr/include/qt/QtGui/qtguiglobal.h:43,
+                 from /usr/include/qt/QtWidgets/qtwidgetsglobal.h:43,
+                 from /usr/include/qt/QtWidgets/qframe.h:43,
+                 from /usr/include/qt/QtWidgets/QFrame:1,
+                 from ../ChessBoard.h:52,
+                 from ../MachineGame.h:25,
+                 from ../MachineGame.cpp:22:
+/usr/include/qt/QtCore/qglobal.h:1276:81: 附注：在此声明
+ 1276 | Q_CORE_EXPORT QT_DEPRECATED_VERSION_X_5_15("use QRandomGenerator instead") void qsrand(uint seed);
+      |                                                                                 ^~~~~~
+../MachineGame.cpp:320:21: 警告：‘int qrand()’ is deprecated: use QRandomGenerator instead [-Wdeprecated-declarations]
+  320 |     int temp =qrand()% nStepsCount;
+      |                     ^
+In file included from /usr/include/qt/QtGui/qtguiglobal.h:43,
+                 from /usr/include/qt/QtWidgets/qtwidgetsglobal.h:43,
+                 from /usr/include/qt/QtWidgets/qframe.h:43,
+                 from /usr/include/qt/QtWidgets/QFrame:1,
+                 from ../ChessBoard.h:52,
+                 from ../MachineGame.h:25,
+                 from ../MachineGame.cpp:22:
+/usr/include/qt/QtCore/qglobal.h:1277:80: 附注：在此声明
+ 1277 | Q_CORE_EXPORT QT_DEPRECATED_VERSION_X_5_15("use QRandomGenerator instead") int qrand();
+      |                                                                                ^~~~~
+g++ -c -pipe -D_FORTIFY_SOURCE=2 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -Wall -Wextra -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../chinessChess-5.6.0 -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++ -o SelectGameMode.o ../SelectGameMode.cpp
+g++ -c -pipe -D_FORTIFY_SOURCE=2 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -Wall -Wextra -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../chinessChess-5.6.0 -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++ -o AboutAuthor.o ../AboutAuthor.cpp
+/usr/bin/rcc -name chooseresource ../chooseresource.qrc -o qrc_chooseresource.cpp
+g++ -pipe -D_FORTIFY_SOURCE=2 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -Wall -Wextra -dM -E -o moc_predefs.h /usr/lib/qt/mkspecs/features/data/dummy.cpp
+g++ -c -pipe -D_FORTIFY_SOURCE=2 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -Wall -Wextra -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../chinessChess-5.6.0 -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++ -o ChessBoard.o ../ChessBoard.cpp
+g++ -c -pipe -D_FORTIFY_SOURCE=2 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -Wall -Wextra -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../chinessChess-5.6.0 -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++ -o qrc_chooseresource.o qrc_chooseresource.cpp
+/usr/bin/moc -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --include /home/xmuli/project/github/temp/chess/src/chinessChess-5.6.0/bin/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/xmuli/project/github/temp/chess/src/chinessChess-5.6.0 -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../ChessBoard.h -o moc_ChessBoard.cpp
+/usr/bin/moc -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --include /home/xmuli/project/github/temp/chess/src/chinessChess-5.6.0/bin/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/xmuli/project/github/temp/chess/src/chinessChess-5.6.0 -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../ChessStep.h -o moc_ChessStep.cpp
+/usr/bin/moc -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --include /home/xmuli/project/github/temp/chess/src/chinessChess-5.6.0/bin/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/xmuli/project/github/temp/chess/src/chinessChess-5.6.0 -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../NetworkGame.h -o moc_NetworkGame.cpp
+/usr/bin/moc -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --include /home/xmuli/project/github/temp/chess/src/chinessChess-5.6.0/bin/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/xmuli/project/github/temp/chess/src/chinessChess-5.6.0 -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../ChooseMainWindow.h -o moc_ChooseMainWindow.cpp
+/usr/bin/moc -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --include /home/xmuli/project/github/temp/chess/src/chinessChess-5.6.0/bin/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/xmuli/project/github/temp/chess/src/chinessChess-5.6.0 -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../SelectGameMode.h -o moc_SelectGameMode.cpp
+/usr/bin/moc -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --include /home/xmuli/project/github/temp/chess/src/chinessChess-5.6.0/bin/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/xmuli/project/github/temp/chess/src/chinessChess-5.6.0 -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../AboutAuthor.h -o moc_AboutAuthor.cpp
+../ChessBoard.cpp: 在成员函数‘bool ChessBoard::canMoveJIANG(int, int, int, int)’中:
+../ChessBoard.cpp:399:47: 警告：unused parameter ‘killId’ [-Wunused-parameter]
+  399 | bool ChessBoard::canMoveJIANG(int moveId, int killId, int row, int col)
+      |                                           ~~~~^~~~~~
+../ChessBoard.cpp: 在成员函数‘bool ChessBoard::canMoveSHI(int, int, int, int)’中:
+../ChessBoard.cpp:420:45: 警告：unused parameter ‘killId’ [-Wunused-parameter]
+  420 | bool ChessBoard::canMoveSHI(int moveId, int killId, int row, int col)
+      |                                         ~~~~^~~~~~
+../ChessBoard.cpp: 在成员函数‘bool ChessBoard::canMoveXIANG(int, int, int, int)’中:
+../ChessBoard.cpp:441:47: 警告：unused parameter ‘killId’ [-Wunused-parameter]
+  441 | bool ChessBoard::canMoveXIANG(int moveId, int killId, int row, int col)
+      |                                           ~~~~^~~~~~
+../ChessBoard.cpp: 在成员函数‘bool ChessBoard::canMoveMA(int, int, int, int)’中:
+../ChessBoard.cpp:487:9: 警告：unused variable ‘dr2’ [-Wunused-variable]
+  487 |     int dr2 = (m_ChessPieces[moveId].m_nRow + row)/2;
+      |         ^~~
+../ChessBoard.cpp:488:9: 警告：unused variable ‘dc2’ [-Wunused-variable]
+  488 |     int dc2 = (m_ChessPieces[moveId].m_nCol + col)/2;
+      |         ^~~
+../ChessBoard.cpp:480:44: 警告：unused parameter ‘killId’ [-Wunused-parameter]
+  480 | bool ChessBoard::canMoveMA(int moveId, int killId, int row, int col)
+      |                                        ~~~~^~~~~~
+../ChessBoard.cpp: 在成员函数‘bool ChessBoard::canMoveCHE(int, int, int, int)’中:
+../ChessBoard.cpp:549:45: 警告：unused parameter ‘killId’ [-Wunused-parameter]
+  549 | bool ChessBoard::canMoveCHE(int moveId, int killId, int row, int col)
+      |                                         ~~~~^~~~~~
+../ChessBoard.cpp: 在成员函数‘bool ChessBoard::canMoveBING(int, int, int, int)’中:
+../ChessBoard.cpp:571:46: 警告：unused parameter ‘killId’ [-Wunused-parameter]
+  571 | bool ChessBoard::canMoveBING(int moveId, int killId, int row, int col)
+      |                                          ~~~~^~~~~~
+g++ -c -pipe -D_FORTIFY_SOURCE=2 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -Wall -Wextra -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../chinessChess-5.6.0 -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++ -o moc_ChessBoard.o moc_ChessBoard.cpp
+g++ -c -pipe -D_FORTIFY_SOURCE=2 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -Wall -Wextra -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../chinessChess-5.6.0 -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++ -o moc_ChessStep.o moc_ChessStep.cpp
+../ChessBoard.cpp: 在成员函数‘bool ChessBoard::isChecked(QPoint, int&, int&)’中:
+../ChessBoard.cpp:144:1: 警告：在有返回值的函数中，控制流程到达函数尾 [-Wreturn-type]
+  144 | }
+      | ^
+g++ -c -pipe -D_FORTIFY_SOURCE=2 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -Wall -Wextra -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../chinessChess-5.6.0 -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++ -o moc_NetworkGame.o moc_NetworkGame.cpp
+g++ -c -pipe -D_FORTIFY_SOURCE=2 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -Wall -Wextra -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../chinessChess-5.6.0 -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++ -o moc_ChooseMainWindow.o moc_ChooseMainWindow.cpp
+g++ -c -pipe -D_FORTIFY_SOURCE=2 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -Wall -Wextra -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../chinessChess-5.6.0 -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++ -o moc_SelectGameMode.o moc_SelectGameMode.cpp
+g++ -c -pipe -D_FORTIFY_SOURCE=2 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -Wall -Wextra -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../chinessChess-5.6.0 -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++ -o moc_AboutAuthor.o moc_AboutAuthor.cpp
+g++ -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -o ChineseChess main.o ChessBoard.o ChessPieces.o ChessStep.o MachineGame.o NetworkGame.o ChooseMainWindow.o SelectGameMode.o AboutAuthor.o qrc_chooseresource.o moc_ChessBoard.o moc_ChessStep.o moc_NetworkGame.o moc_ChooseMainWindow.o moc_SelectGameMode.o moc_AboutAuthor.o   /usr/lib/libQt5Widgets.so /usr/lib/libQt5Gui.so /usr/lib/libQt5Network.so /usr/lib/libQt5Core.so -lGL -lpthread   
+==> 正在开始 check()...
+==> 正在进入 fakeroot 环境...
+==> 正在开始 package()...
+QStandardPaths: wrong ownership on runtime directory /run/user/1000, 1000 instead of 0
+qt.qpa.xcb: QXcbConnection: XCB error: 5 (BadAtom), sequence: 559, resource id: 0, major code: 20 (GetProperty), minor code: 0
+==> 正在清理安装...
+  -> 正在删除 libtool 文件...
+  -> 正在清除不打算要的文件...
+  -> 正在移除静态库文件...
+  -> 正在从二进制文件和库中清除不需要的系统符号...
+  -> 正在压缩 man 及 info 文档...
+==> 正在检查打包问题...
+==> 正在构建软件包"chinesschess"...
+  -> 正在生成 .PKGINFO 文件...
+  -> 正在生成 .BUILDINFO 文件...
+  -> 正在生成 .MTREE 文件...
+  -> 正在压缩软件包...
+==> 正在离开 fakeroot 环境。
+==> 完成创建：chinesschess 5.6.0-1 (2020年08月20日 星期四 15时33分02秒)
+☁  chess       
