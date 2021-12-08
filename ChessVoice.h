@@ -21,7 +21,7 @@
 #define CHESSVOICE_H
 
 #include <QObject>
-#include <QSound>
+#include <QSoundEffect>
 
 class ChessVoice : public QObject
 {
@@ -30,12 +30,12 @@ public:
     explicit ChessVoice(QObject *parent = nullptr);
     ~ChessVoice();
 
-    QSound *m_win =new QSound(":/sound/WinSound.wav",this);
-    QSound *m_select =new QSound(":/sound/selectChess.wav",this);
-    QSound *m_move =new QSound(":/sound/moveChess.wav",this);
-    QSound *m_eat =new QSound(":/sound/eatChess.wav",this);
-    QSound *m_back =new QSound(":/sound/backChess.wav",this);
-    QSound *m_general =new QSound(":/sound/generalSound.wav",this);
+    QSoundEffect *m_win;
+    QSoundEffect *m_select;
+    QSoundEffect *m_move;
+    QSoundEffect *m_eat;
+    QSoundEffect *m_back;
+    QSoundEffect *m_general;
 
     void voiceWin();    //胜利音效
     void voiceSelect(); //选棋音效

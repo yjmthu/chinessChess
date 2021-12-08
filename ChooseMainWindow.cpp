@@ -88,11 +88,6 @@ ChooseMainWindow::ChooseMainWindow(QWidget *parent) : QDialog(parent)
             this->show();
         });
     });
-
-
-
-
-
 }
 
 ChooseMainWindow::~ChooseMainWindow()

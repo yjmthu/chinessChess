@@ -27,27 +27,28 @@ struct POS
     int t_nRow;
     int t_nCol;
     ChessPieces::m_emTYPE t_emType;
+    const char t_name[4];
 };
 
 //定义基础的16棋子[预定作为上方使用，黑棋使用]
 POS tPos[16]= {
-              {0, 0, ChessPieces::CHE},
-              {0, 1, ChessPieces::MA},
-              {0, 2, ChessPieces::XIANG},
-              {0, 3, ChessPieces::SHI},
-              {0, 4, ChessPieces::JIANG},
-              {0, 5, ChessPieces::SHI},
-              {0, 6, ChessPieces::XIANG},
-              {0, 7, ChessPieces::MA},
-              {0, 8, ChessPieces::CHE},
+              {0, 0, ChessPieces::CHE, "车"},
+              {0, 1, ChessPieces::MA, "马"},
+              {0, 2, ChessPieces::XIANG, "象"},
+              {0, 3, ChessPieces::SHI, "士"},
+              {0, 4, ChessPieces::JIANG, "将"},
+              {0, 5, ChessPieces::SHI, "士"},
+              {0, 6, ChessPieces::XIANG, "相"},
+              {0, 7, ChessPieces::MA, "马"},
+              {0, 8, ChessPieces::CHE, "车"},
 
-              {2, 1, ChessPieces::PAO},
-              {2, 7, ChessPieces::PAO},
-              {3, 0, ChessPieces::BING},
-              {3, 2, ChessPieces::BING},
-              {3, 4, ChessPieces::BING},
-              {3, 6, ChessPieces::BING},
-              {3, 8, ChessPieces::BING}
+              {2, 1, ChessPieces::PAO, "炮"},
+              {2, 7, ChessPieces::PAO, "炮"},
+              {3, 0, ChessPieces::BING, "兵"},
+              {3, 2, ChessPieces::BING, "兵"},
+              {3, 4, ChessPieces::BING, "兵"},
+              {3, 6, ChessPieces::BING, "兵"},
+              {3, 8, ChessPieces::BING, "兵"}
               };
 
 ChessPieces::ChessPieces()
@@ -84,42 +85,42 @@ QString ChessPieces::getnName(bool isRedSide)
     if(isRedSide){
         switch (m_emType) {
         case CHE:
-            return "俥";
+            return "车";
         case MA:
-            return "傌";
+            return "马";
         case PAO:
             return "炮";
         case BING:
             return "兵";
         case JIANG:
-            return "帥";
+            return "帅";
         case SHI:
             return "仕";
         case XIANG:
             return "相";
         default:
-            return "null";
+            return "無";
         }
     }
     else{
         switch (m_emType) {
         case CHE:
-            return "車";
+            return "车";
         case MA:
-            return "馬";
+            return "马";
         case PAO:
-            return "砲";
+            return "炮";
         case BING:
             return "卒";
         case JIANG:
-            return "將";
+            return "将";
         case SHI:
             return "士";
         case XIANG:
             return "象";
         default:
-            return "null";
+            return "无";
         }
     }
-    return "ERROR";
+    return "Error";
 }

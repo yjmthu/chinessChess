@@ -18,10 +18,22 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.html>.
  */
 #include "ChessVoice.h"
+#include <QUrl>
 
-ChessVoice::ChessVoice(QObject *parent) : QObject(parent)
+ChessVoice::ChessVoice(QObject *parent) : QObject(parent),
+    m_win(new QSoundEffect(this)),
+    m_select(new QSoundEffect(this)),
+    m_move(new QSoundEffect(this)),
+    m_eat(new QSoundEffect(this)),
+    m_back(new QSoundEffect(this)),
+    m_general(new QSoundEffect(this))
 {
-
+    m_win->setSource(QUrl(":/sound/WinSound.wav"));
+    m_select->setSource(QUrl(":/sound/selectChess.wav"));
+    m_move->setSource(QUrl(":/sound/moveChess.wav"));
+    m_eat->setSource(QUrl(":/sound/eatChess.wav"));
+    m_back->setSource(QUrl(":/sound/backChess.wav"));
+    m_general->setSource(QUrl(":/sound/generalSound.wav"));
 }
 ChessVoice:: ~ChessVoice()
 {
@@ -30,36 +42,36 @@ ChessVoice:: ~ChessVoice()
 
 void ChessVoice:: voiceWin()
 {
-    if(m_win!= nullptr)
+    if(m_win)
         this->m_win->play();
 }
 
 void ChessVoice::voiceSelect()
 {
-    if(m_select!= nullptr)
+    if(m_select)
         this->m_select->play();
 }
 
 void ChessVoice:: voiceMove()
 {
-    if(m_move!= nullptr)
+    if(m_move)
         this->m_move->play();
 }
 
 void ChessVoice:: voiceEat()
 {
-    if(m_eat!= nullptr)
+    if(m_eat)
         this->m_eat->play();
 }
 
 void ChessVoice:: voiceBack()
 {
-    if(m_back!= nullptr)
+    if(m_back)
         this->m_back->play();
 }
 
 void ChessVoice:: voiceGeneral()
 {
-    if(m_general!= nullptr)
+    if(m_general)
         this->m_general->play();
 }

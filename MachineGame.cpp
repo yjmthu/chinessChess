@@ -20,6 +20,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.html>.
  */
 #include "MachineGame.h"
+#include <QRandomGenerator>
 
 MachineGame::MachineGame()
 {
@@ -32,12 +33,15 @@ MachineGame::~MachineGame()
 //辅助函: 选棋或移动棋子
 void MachineGame::chooseOrMovePieces(int tempID, int& row, int& col)
 {
+    qDebug() << "选中ID:" << m_nSelectID;
     if(m_nSelectID == -1) //选择棋子
     {
+        qDebug("选中棋子");
         if(m_nCheckedID != -1)
         {
             if(m_ChessPieces[m_nCheckedID].m_bRed)
             {
+                qDebug("正式选中!");
                 m_nSelectID = tempID;
             }
             else
@@ -46,20 +50,28 @@ void MachineGame::chooseOrMovePieces(int tempID, int& row, int& col)
                 return;
             }
         }
+        else {
+            qDebug("目标为-1!");
+        }
     }
     else
     {
+        qDebug("移动棋子");
         if(canMove(m_nSelectID, m_nCheckedID, row, col ))
         {
+            qDebug("可以移动");
             //_selectId为第一次点击选中的棋子，
             //_clickId为第二次点击||被杀的棋子ID，准备选中棋子下子的地方
             m_ChessPieces[m_nSelectID].m_nRow = row;
             m_ChessPieces[m_nSelectID].m_nCol = col;
             if(m_nCheckedID != -1)
                 m_ChessPieces[m_nCheckedID].m_bDead = true;
-
             m_nSelectID = -1;
             m_bIsRed = !m_bIsRed;
+        }
+        else
+        {
+            qDebug("不可以移动");
         }
     }
 
@@ -82,7 +94,7 @@ void MachineGame::saveStep(int selectID, int checkedID, int row, int col, QVecto
 
 void MachineGame::getAllPossibleMoveStep(QVector<ChessStep *> &steps)
 {
-    for(int id = 0; id<16; id++)   //存在的黑棋， 能否走到这些盘棋盘里面的格子
+    for(int id = 0; id<16; id++)   // 存在的黑棋， 能否走到这些盘棋盘里面的格子
     {
         if(m_ChessPieces[id].m_bDead)
             continue;
@@ -94,11 +106,11 @@ void MachineGame::getAllPossibleMoveStep(QVector<ChessStep *> &steps)
                 int i = 16;
                 for( ; i <= 31; i++)
                 {
-                    if(m_ChessPieces[i].m_nRow == row && m_ChessPieces[i].m_nCol == col && m_ChessPieces[i].m_bDead == false)
+                    if(m_ChessPieces[i].m_nRow == row && m_ChessPieces[i].m_nCol == col && !m_ChessPieces[i].m_bDead)
                         break;
                 }
 
-                if(i!=32)
+                if(i != 32)
                 {
                     if(canMove(id, i, row, col))
                         saveStep(id, i, row, col, steps);
@@ -139,50 +151,53 @@ void MachineGame::getAllPossibleMoveStepAndNoKill(QVector<ChessStep *> &steps)
 
 void MachineGame::mousePressEvent(QMouseEvent *ev)
 {
+    qDebug("鼠标点击!");
     if(ev->button() != Qt::LeftButton)
         return;
 
     int row, col;
-    if(!isChecked(ev->pos(), row, col))
+    qDebug() << "点击坐标:" << ev->pos();
+    if(!isChecked(getRealPoint(ev->pos()), row, col))
         return;
 
     m_nCheckedID = -1;
 
     int i =0;
-    for( ; i < 32; i++)
+    for( ; i < 32; ++i)
     {
-        if(m_ChessPieces[i].m_nRow == row && m_ChessPieces[i].m_nCol == col && m_ChessPieces[i].m_bDead == false)
-            break;
-    }
-
-    if(0<=i && i<32)
-        m_nCheckedID = i;
-
-    clickPieces(m_nCheckedID, row, col);
-
-    if(m_bIsRed) //红方玩家时间
-    {
-        chooseOrMovePieces(i, row, col);
-
-        if(!m_bIsRed) //黑方紧接着进行游戏
+        if(m_ChessPieces[i].m_nRow == row && m_ChessPieces[i].m_nCol == col && !m_ChessPieces[i].m_bDead)
         {
-            machineChooseAndMovePieces();
-            //ToDo: 机器 黑方时间
+            qDebug("更改一次!");
+            m_nCheckedID = i;
+            break;
         }
     }
+    clickPieces(m_nCheckedID, row, col);
+    clickPieces(i, row, col);
+//    if(m_bIsRed) //红方玩家时间
+//    {
+//        chooseOrMovePieces(i, row, col);
 
-
-
+//        if(!m_bIsRed) //黑方紧接着进行游戏
+//        {
+//            machineChooseAndMovePieces();
+//            //ToDo: 机器 黑方时间
+//        }
+//    }
 }
 
-void MachineGame::clickPieces(int checkedID, int &row, int &col)
+void MachineGame::clickPieces(int checkedID, int& row, int& col)
 {
     if(m_bIsRed) //红方玩家时间
     {
+        qDebug("红方动");
         chooseOrMovePieces(checkedID, row, col);
 
         if(!m_bIsRed) //黑方紧接着进行游戏
+        {
+            qDebug("黑方时间");
             machineChooseAndMovePieces();
+        }
             //ToDo: 机器 黑方时间
     }
 }
@@ -256,9 +271,8 @@ ChessStep* MachineGame::getBestMove()
     getAllPossibleMoveStepAndNoKill(stepsAndNoKill);   // 黑棋移动所有可能的步骤(不吃红棋子)
 
     //2.试着走一下
-    for(QVector<ChessStep*>::iterator it = steps.begin(); it!=steps.end(); it++)
+    for(const auto step: stepsAndNoKill)
     {
-        ChessStep* step = *it;
         fakeMove(step);
         int score = calcScore();   //3.计算最好的局面分
         unFakeMove(step);
@@ -276,13 +290,16 @@ ChessStep* MachineGame::getBestMove()
     //2.试着走一下
     //从这种不击杀红棋子，只是单纯移动黑棋steps里面，随机抽选一种进行下棋
     int nStepsCount = stepsAndNoKill.count();
-    qsrand(QTime(0,0,0).secsTo(QTime::currentTime())); //随机数种子, 0~MAX
-    int temp =qrand()% nStepsCount;
+    // qsrand(QTime(0, 0, 0).secsTo(QTime::currentTime()));       //随机数种子, 0~MAX
+    int temp = QRandomGenerator::global()->bounded(nStepsCount);
     QVector<ChessStep*>::iterator it = stepsAndNoKill.begin();
     retStep = it[temp];
-
+    qDebug("谁赢了1?");
     if(retStep == NULL)
+    {
+        qDebug("谁赢了2?");
         whoWin();
+    }
 
     //4.取最好的结果作为参考
     return retStep;
@@ -290,6 +307,7 @@ ChessStep* MachineGame::getBestMove()
 
 void MachineGame::machineChooseAndMovePieces()
 {
+    qDebug("黑棋动");
     ChessStep* step = getBestMove();
 
     if(step->m_nKillID == -1)  //黑棋没有可以击杀的红棋子，只好走能够走的过程中最后一步棋
@@ -298,7 +316,7 @@ void MachineGame::machineChooseAndMovePieces()
         m_ChessPieces[step->m_nMoveID].m_nCol = step->m_nnColTo;
 
     }
-    else //黑棋有可以击杀的红棋子，故击杀红棋子
+    else // 黑棋有可以击杀的红棋子，故击杀红棋子
     {
         m_ChessPieces[step->m_nKillID].m_bDead = true;
         m_ChessPieces[step->m_nMoveID].m_nRow = m_ChessPieces[step->m_nKillID].m_nRow;

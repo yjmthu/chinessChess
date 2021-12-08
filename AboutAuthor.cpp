@@ -35,3 +35,9 @@ AboutAuthor::~AboutAuthor()
 {
     delete ui;
 }
+
+void AboutAuthor::on_textBrowser_anchorClicked(const QUrl &arg1)
+{
+
+}
+

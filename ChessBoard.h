@@ -91,7 +91,7 @@ public:
 private:
     bool hongMenFeast();                     // 鸿门宴：对将
     bool havePieces(int row, int col);       // 判断某一格子，是否有棋子
-    void reset();  // 胜负已分，重置
+    void reset();                            // 胜负已分，重置
     void winMessageBox(QString title, QString msg);
 
 public:
@@ -104,7 +104,7 @@ public:
 //    virtual void mousePressEvent(QMouseEvent *);    //鼠标点击事件
 //    virtual void clickPieces(int checkedID, int& row, int& col);
 
-    //象棋移动的规则[将  士  象  马  车  炮  兵]
+    // 象棋移动的规则   [将  士  象  马  车  炮  兵]
     bool canMove(int moveId, int killId, int row, int col);
     bool canMoveJIANG(int moveId, int killId, int row, int col);
     bool canMoveSHI(int moveId, int killId, int row, int col);
@@ -118,30 +118,30 @@ public:
     void init();
 
     //移动相关
-    virtual void mouseReleaseEvent(QMouseEvent *ev); // 鼠标释放事件
-    void click(QPoint pt);  //点击转换像素
-    virtual void clickPieces(int id, int row, int col);   //点击选棋
+    virtual void mouseReleaseEvent(QMouseEvent *ev);               // 鼠标释放事件
+    void click(QPoint pt);                                         //点击转换像素
+    virtual void clickPieces(int id, int row, int col);            //点击选棋
     void trySelectStone(int id);    //尝试选棋
-    void tryMoveStone(int killid, int row, int col);    //尝试移动
-    void doMoveStone(int moveid, int killid, int row, int col);   //执行移动棋子
+    void tryMoveStone(int killid, int row, int col);               //尝试移动
+    void doMoveStone(int moveid, int killid, int row, int col);    //执行移动棋子
     void saveStep(int moveid, int killid, int row, int col, QVector<ChessStep*>& steps);     //保存步数
 
-    void backOne();     //悔棋一子
-    void back(ChessStep* step);  //悔棋到指定步数
-    virtual void back();    //悔棋
+    void backOne();               //悔棋一子
+    void back(ChessStep* step);   //悔棋到指定步数
+    virtual void back();          //悔棋
 
-    ChessPieces m_ChessPieces[32];  //所有棋子
+    ChessPieces m_ChessPieces[32];    //所有棋子
     QVector<ChessStep*> m_ChessSteps; // 悔棋步数
-    ChessVoice m_Chessvoice;  //下棋音效
-    int m_nR;          //棋子半径
-    int m_nOffSet;     //距离界面的边距
-    int m_nD;          //间距为50px
-    int m_nSelectID;   //选中棋子[-1:选棋子 || 非-1:走棋子]
-    int m_nCheckedID;    //将要被击杀的棋子ID
-    bool m_bIsRed;     //是否是红方回合
+    ChessVoice m_Chessvoice;          //下棋音效
+    int m_nR;            // 棋子半径
+    int m_nOffSet;       // 距离界面的边距
+    int m_nD;            // 间距为50px
+    int m_nSelectID;     // 选中棋子[-1:选棋子 || 非-1:走棋子]
+    int m_nCheckedID;    // 将要被击杀的棋子ID
+    bool m_bIsRed;       // 是否是红方回合
     bool m_bIsTcpServer;
-    bool m_bIsOver; //是否已经游戏结束
-    bool m_bIsShowStep; //是否显示步数
+    bool m_bIsOver;      // 是否已经游戏结束
+    bool m_bIsShowStep;  // 是否显示步数
 
 private slots:
     void updateTime();

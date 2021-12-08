@@ -37,6 +37,9 @@ public:
     explicit AboutAuthor(QWidget *parent = 0);
     ~AboutAuthor();
 
+private slots:
+    void on_textBrowser_anchorClicked(const QUrl &arg1);
+
 private:
     Ui::AboutAuthor *ui;
 };
